@@ -21,4 +21,9 @@
         name: "vpc_subnet1"
         vpc_id: vpc_data.vpc.id
         cidr: "{{PubSub1Cidr}}"
-        availability_zone: "{{zone1}}"
+        region: "{{region}}"
+        az: "{{zone1}}"
+        map_public: yes
+        resource_tags:
+          Name: publicsubnet1
+      register: pubsub1_data
