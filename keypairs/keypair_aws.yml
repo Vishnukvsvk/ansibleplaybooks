@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: sample keypair
+      amazon.aws.ec2_key:
+        name: my_keypairpiti
+        region: us-east-1
+      register: keyout
+    - debug:
+        var: keyout
+    - name: store key
+      copy:
+        content: "{{keyout.key.private_key}}"
+        dest: ./sample-key.pem
+      when: keyout.changed

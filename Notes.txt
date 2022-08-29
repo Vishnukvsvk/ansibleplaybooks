@@ -1,0 +1,12 @@
+To test all ansible aws ops, create an ec2 instance, attach administrator access role, install ansible, python3-boto3,awscli
+sudo apt install ansible
+sudo apt install python3-boto3
+sudo apt install awscli
+
+Bastion should be secure. Dont choose any AMI. Choose a highly secure, least vulnerable AMI like CIS
+ansible has modules. They are like functions which can be used in playbook. Ex- copy module
+
+Tenancy defines how EC2 instances are distributed across physical hardware and affects pricing. There are three tenancy options available:
+Shared (default) — Multiple AWS accounts may share the same physical hardware.
+Dedicated Instance (dedicated) — Your instance runs on single-tenant hardware.
+

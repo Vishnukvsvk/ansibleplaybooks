@@ -1,0 +1,24 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Import vpc variables
+      include_vars: vars/vpc_setup
+    
+    - name: Create vpc
+      ec2_vpc_net:
+        name: "{{vpc_name}}"
+        cidr_block: "{{vpcCidr}}"
+        region: "{{region}}"
+        tenancy: dedicated
+      register: vpc_metadata
+    
+    - debug:
+        var: vpc_data
+
+    - name: Create a subnet 
+      ec2_vpc_subnet:
+        name: "vpc"
+        vpc_id: vpc_data.vpc.id
+        cidr_block: "{{PubSub1Cidr}}"
+        availability_zone: "{{zone1}}"
