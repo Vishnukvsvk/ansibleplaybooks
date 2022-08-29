@@ -20,5 +20,5 @@
       ec2_vpc_subnet:
         name: "vpc_subnet1"
         vpc_id: vpc_data.vpc.id
-        cidr_block: "{{PubSub1Cidr}}"
+        cidr: "{{PubSub1Cidr}}"
         availability_zone: "{{zone1}}"
