@@ -11,14 +11,14 @@
         cidr_block: "{{vpcCidr}}"
         region: "{{region}}"
         tenancy: dedicated
-      register: vpc_metadata
+      register: vpc_data
     
     - debug:
         var: vpc_data
 
     - name: Create a subnet 
       ec2_vpc_subnet:
-        name: "vpc"
+        name: "vpc_subnet1"
         vpc_id: vpc_data.vpc.id
         cidr_block: "{{PubSub1Cidr}}"
         availability_zone: "{{zone1}}"
